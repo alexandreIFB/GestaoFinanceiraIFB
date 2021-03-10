@@ -31,15 +31,6 @@ function SingIn() {
         }
     };
 
-    const Logout = () => {
-        setUser({
-            username: "",
-            password: "",
-        });
-
-        console.log("Logout");
-    };
-
     return (
         <div className="App">
             {user.loged ? (

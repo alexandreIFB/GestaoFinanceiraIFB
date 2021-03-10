@@ -8,26 +8,62 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
-
 library.add(fab, faCheckSquare, faCoffee);
 
-function LoginForm({ Login, error, setError }) {
+function ResgistroForm({ Registro, error, setError }) {
     const [details, setDetails] = useState({
+        email: "",
+        confirmEmail: "",
         username: "",
         password: "",
+        confirmPassword: "",
     });
 
     const submitHandler = (e) => {
         e.preventDefault();
 
-        Login(details);
+        Registro(details);
     };
 
     return (
         <Main className="container">
-            <h2>Login</h2>
+            <h2>Register</h2>
             {error !== "" ? <div className="error">{error}</div> : ""}
             <form onSubmit={submitHandler}>
+                <div className="input-field">
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Enter Your Email"
+                        onChange={(e) => {
+                            setDetails({
+                                ...details,
+                                email: e.target.value,
+                            });
+                            setError("");
+                        }}
+                        value={details.email}
+                    />
+                    <div className="underline"></div>
+                </div>
+                <div className="input-field">
+                    <input
+                        type="email"
+                        name="confirmEmail"
+                        id="confirmEmail"
+                        placeholder="Confimr Your Email"
+                        onChange={(e) => {
+                            setDetails({
+                                ...details,
+                                confirmEmail: e.target.value,
+                            });
+                            setError("");
+                        }}
+                        value={details.confirmEmail}
+                    />
+                    <div className="underline"></div>
+                </div>
                 <div className="input-field">
                     <input
                         type="text"
@@ -50,7 +86,7 @@ function LoginForm({ Login, error, setError }) {
                         type="password"
                         name="password"
                         id="password"
-                        placeholder="Enter Your Password"
+                        placeholder="Enter Your password"
                         onChange={(e) => {
                             setDetails({
                                 ...details,
@@ -62,18 +98,32 @@ function LoginForm({ Login, error, setError }) {
                     />
                     <div className="underline"></div>
                 </div>
-                <input type="submit" value="Entrar" />
+                <div className="input-field">
+                    <input
+                        type="password"
+                        name="confirmPassword"
+                        id="confirmPassword"
+                        placeholder="Confirm Your Password"
+                        onChange={(e) => {
+                            setDetails({
+                                ...details,
+                                confirmPassword: e.target.value,
+                            });
+                            setError("");
+                        }}
+                        value={details.confirmPassword}
+                    />
+                    <div className="underline"></div>
+                </div>
+                <input type="submit" value="Cadastrar" />
             </form>
 
             <div className="footer">
-                <span>
-                    <Link to="./register">Criar Conta</Link>
-                </span>
                 <div className="social-fields">
                     <div className="social-field twitter">
                         <Link to="login">
                             <FontAwesomeIcon icon={["fab", "twitter"]} /> Sign
-                            in with twitter
+                            Up with twitter
                         </Link>
                     </div>
                 </div>
@@ -81,13 +131,16 @@ function LoginForm({ Login, error, setError }) {
                     <div className="social-field facebook">
                         <Link to="login">
                             <FontAwesomeIcon icon={["fab", "facebook-f"]} />{" "}
-                            Sign in with facebook
+                            Sign Up with facebook
                         </Link>
                     </div>
                 </div>
+                <span>
+                    <Link to="./">Ou faça Login</Link>
+                </span>
             </div>
         </Main>
     );
 }
 
-export default LoginForm;
+export default ResgistroForm;

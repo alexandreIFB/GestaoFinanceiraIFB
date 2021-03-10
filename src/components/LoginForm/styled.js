@@ -36,6 +36,10 @@ export const Main = styled.main`
         margin-bottom: 0.5rem;
         position: relative;
     }
+    .error {
+        color: red;
+        padding-bottom: 0.5rem;
+    }
 
     h2::before {
         content: "";
@@ -48,61 +52,38 @@ export const Main = styled.main`
         background: linear-gradient(45deg, #8e2de2, #4a00e0);
     }
 
-    .error {
-        color: red;
-    }
-
     form {
         display: flex;
         flex-direction: column;
+        align-content: space-between;
     }
 
     .input-field {
         position: relative;
-    }
-
-    form .input-field:first-child {
-        margin-bottom: 1.5rem;
-    }
-
-    .input-field .underline::before {
-        content: "";
-        position: absolute;
-        height: 1px;
-        width: 100%;
-        bottom: -5px;
-        left: 0;
-        background: rgba(0, 0, 0, 0.2);
-    }
-
-    .input-field .underline::after {
-        content: "";
-        position: absolute;
-        height: 1px;
-        width: 100%;
-        bottom: -5px;
-        left: 0;
-        background: linear-gradient(45deg, #8e2de2, #4a00e0);
-        transform: scaleX(0);
-        transition: all 0.3s ease-in-out;
-        transform-origin: left;
-    }
-
-    .input-field input:focus ~ .underline::after {
-        transform: scaleX(1);
+        background: #ededed;
+        margin-bottom: 16px;
+        width: 270px;
+        height: 38px;
+        border-radius: 3px;
+        display: flex;
+        padding: 10px 10px 10px 10px;
     }
 
     .input-field input {
         outline: none;
         font-size: 0.9rem;
         color: rgba(0, 0, 0, 0.7);
+        background-color: #ededed;
     }
 
     .input-field input::placeholder {
         color: rgba(0, 0, 0, 0.5);
+        font-weight: 600;
+        font-size: 14px;
     }
+
     form input[type="submit"] {
-        margin-top: 2rem;
+        margin-top: 1rem;
         padding: 0.4rem;
         background: linear-gradient(to left, #4776e6, #8e54e9);
         cursor: pointer;
@@ -124,10 +105,13 @@ export const Main = styled.main`
         margin-top: 1rem;
     }
 
-    .footer span {
-        color: rgba(0, 0, 0, 0.7);
+    .footer span a {
+        color: #c3c3c3;
         font-size: 0.8rem;
         text-align: center;
+    }
+    .footer span a:hover {
+        color: #8e54e9;
     }
 
     .footer .social-field {
@@ -148,6 +132,8 @@ export const Main = styled.main`
     .footer .social-field a {
         text-decoration: none;
         color: white;
+        font-weight: 600;
+        font-size: 13.16px;
     }
 
     .footer .social-field.twitter {

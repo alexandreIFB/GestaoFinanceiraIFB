@@ -1,51 +1,47 @@
 import React, { useState } from "react";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import ResgistroForm from "../../components/RegistroForm/RegistroForm";
+import { Redirect } from "react-router-dom";
 
 function SingIn() {
-    const adminUser = {
-        username: "admin",
-        password: "admin123",
-    };
-
-    const [user, setUser] = useState({ username: "", password: "" });
-
     const [error, setError] = useState("");
+    const [user, setUser] = useState({ email: "", username: "", password: "" });
+    const [register, setRegister] = useState(false);
 
-    const Login = ({ username, password }) => {
+    const Registro = ({
+        email,
+        confirmEmail,
+        username,
+        password,
+        confirmPassword,
+    }) => {
         if (
-            username === adminUser.username &&
-            password === adminUser.password
+            email !== confirmEmail ||
+            password !== confirmPassword ||
+            email === "" ||
+            password === "" ||
+            username === ""
         ) {
-            setUser({
-                username: username,
-                password: password,
-            });
-            console.log("Loggin Sucess");
-        } else {
-            console.log("Login invalid");
-            setError("Login invalid");
-        }
-    };
+            setError("Dados Invalidos");
 
-    const Logout = () => {
-        setUser({
-            username: "",
-            password: "",
-        });
-        console.log("Logout");
+            console.log("Dados Invalidos");
+        } else {
+            setUser({ email: email, username: username, password: password });
+            console.log(user);
+            console.log("Envia para o banco!");
+            setRegister(true);
+        }
     };
 
     return (
         <div className="App">
-            {user.username !== "" ? (
-                <div className="welcome">
-                    <h2>
-                        Welcome, <span>{user.username}</span>
-                    </h2>
-                    <button onClick={Logout}>Logout</button>
-                </div>
+            {register ? (
+                <Redirect to="/dashboard"></Redirect>
             ) : (
-                <LoginForm Login={Login} error={error} setError={setError} />
+                <ResgistroForm
+                    Registro={Registro}
+                    error={error}
+                    setError={setError}
+                ></ResgistroForm>
             )}
         </div>
     );
