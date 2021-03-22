@@ -23,7 +23,7 @@ function SingIn() {
         ) {
             setError("Dados Invalidos");
         } else {
-            setUser({ email: email, username: username, password: password });
+            setUser({email, username, password});
             setRegister(true);
         }
     };
