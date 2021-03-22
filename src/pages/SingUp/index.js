@@ -24,7 +24,6 @@ function SingIn() {
             setError("Dados Invalidos");
         } else {
             setUser({ email: email, username: username, password: password });
-            console.log(user);
             setRegister(true);
         }
     };
