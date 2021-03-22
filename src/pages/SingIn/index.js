@@ -23,10 +23,7 @@ function SingIn() {
             setUser({
                 loged: true,
             });
-
-            console.log("Loggin Sucess");
         } else {
-            console.log("Login invalid");
             setError("Login invalid");
         }
     };
