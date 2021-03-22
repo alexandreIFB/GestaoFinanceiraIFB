@@ -1,7 +1,16 @@
 import React from "react";
 
+import Header from "../../components/Header";
+import ContainerDashboard from "../../components/ContainerDashboard";
+
 function Dashboard() {
-    return <h1>DashBoard</h1>;
+    return (
+        <div className="Dash">
+            {}
+            <Header />
+            <ContainerDashboard />
+        </div>
+    );
 }
 
 export default Dashboard;
