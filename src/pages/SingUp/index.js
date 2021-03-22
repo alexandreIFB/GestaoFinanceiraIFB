@@ -22,12 +22,9 @@ function SingIn() {
             username === ""
         ) {
             setError("Dados Invalidos");
-
-            console.log("Dados Invalidos");
         } else {
             setUser({ email: email, username: username, password: password });
             console.log(user);
-            console.log("Envia para o banco!");
             setRegister(true);
         }
     };
